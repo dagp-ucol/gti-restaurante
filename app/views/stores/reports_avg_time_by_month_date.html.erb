@@ -1,0 +1,37 @@
+<h1><%= @store.name %> - Reports here</h1>
+<h2><%= @working_days %> Working days </h2>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Employee id</th>
+      <th scope="col">Employee name</th>
+      <th scope="col">Average hours worked</th>
+      <th scope="col">Total hours worked</th>
+      <th scope="col">Laboral hours of month</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @store_employees.each do |employee| %>
+      <tr>
+        <% assistance = Attendance.where(employee_id: employee.id).where.not(check_out: nil) %>
+        <% total_hours= 0 %>
+        <% assistance.each do |assist| %>
+          <% total_hours += assist.check_out - assist.check_in %>
+        <%end%>
+        <% average_hours = total_hours/@working_days%>
+        <% absences = @working_days - assistance.length %>
+        <% absences_percentage = (absences * 100) / @working_days %>
+        <% laboral_hours = 8 * @working_days %>
+        <th scope="row"><%= employee.id %></th>
+        <th scope="row"><%= "#{employee.first_name} #{employee.last_name}" %></th>
+        <th scope="row"><%= (average_hours/60/60).truncate(3) %></th>
+        <th scope="row"><%= (total_hours/60/60).truncate(3) %></th>
+        <th scope="row"><%= laboral_hours %></th>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<p>
+  <td><%= link_to 'Cancel and return to reports index', store_reports_path, class: 'btn btn-primary' %></td>
+</p>

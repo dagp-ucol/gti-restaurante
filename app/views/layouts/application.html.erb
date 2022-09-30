@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Restaurante</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-dark bg-dark">
+      <div class="container-fluid custom_margin">
+        <a href="/"><%= image_tag("foo-corp_logo_white.png", size: "90x84", alt: "Edit Entry") %></a>
+      <% if logged_in? %>
+        <h1 class="nav_h1">👨‍💻 Admin hub </h1>
+      <% else %>
+          <a href="/"><h1 class="nav_h1">Restaurante</h1></a>
+      <% end %>
+      <% if logged_in? %>
+        <%= link_to 'Log out' , logout_path, method: :delete,class: 'btn btn-warning' %>
+      <% else %>
+        <%= link_to 'ONLINE' , root_path, class: 'btn btn-success disabled' %>
+      <% end %>
+      </div>
+      <% if logged_in? %>
+      <div class=" container d-flex justify-content-around mt-2">
+        <ul class="nav nav-pills">
+          <li class="nav-item mx-3">
+            <a class="btn btn-light" href="/stores">Stores</a>
+          </li>
+          <li class="nav-item mx-3">
+            <a class="btn btn-light" href="/employees">Employees</a>
+          </li>
+          <li class="nav-item mx-3">
+            <a class="btn btn-light" aria-current="page" href="/attendances">Attendances</a>
+          </li>
+        </ul>
+      </div>
+      <% end %>
+    </nav>
+    <%= render 'layouts/flash_msgs' %>
+    <div class='container yield_container'>
+      <%= yield %>
+    </div>
+    <footer class="application_footer">
+      <p> Diego Gentner & Brandon Tapia ©️ 2022 </p>
+    </footer>
+  </body>
+</html>

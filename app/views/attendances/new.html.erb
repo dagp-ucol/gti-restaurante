@@ -1,0 +1,33 @@
+<div class="m-5">
+  <h1>Attendance number: <%=@attendance.id %></h1>
+
+  <% if @attendance.errors.any? %>
+    <h2>The following errors preventing articles to being saved</h2>
+    <ul>
+      <% @attendance.errors.full_messages.each do |msg| %>
+        <li> <%= msg %> </li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <%= form_with scope: :attendance, url: attendances_path, local: true do |f| %>
+
+    <p>
+      <%= f.label :employee_id %><br/>
+      <%= f.number_field :employee_id %>
+    </p>
+    <p>
+      <%= f.label :private_number %><br/>
+      <%= f.number_field :private_number %>
+    </p>
+
+    <p>
+      <%= f.submit "Create new attendance" %>
+    </p>
+
+    <p>
+      <td><%= link_to 'Cancel and return to attendance index', attendances_path, class: 'btn btn-primary my-3' %></td>
+    </p>
+
+  <% end %>
+</div>

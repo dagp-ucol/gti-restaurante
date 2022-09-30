@@ -1,0 +1,51 @@
+@import 'bootstrap/dist/css/bootstrap';
+
+body {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+// --------------- application.html.erb --------------
+// ----- navbar -----
+.navbar {
+  margin-bottom: 50px;
+}
+.custom_margin {
+  margin-right: 13px;
+}
+.nav_h1 {
+  color: #e5e5d5;
+}
+
+// ----- custom flash msg -----
+.custom_flash_msg {
+  margin-top: -50px;
+}
+
+// ----- yield -----
+.yield_container {
+  flex-grow: 1;
+}
+
+// ----- footer -----
+.application_footer {
+  background-color: #212529;
+  color: #e5e5d5;
+  padding: 20px;
+  text-align: center;
+
+  p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    margin: 0;
+  }
+}
+
+// --------------- custom styles --------------
+.custom_center_element {
+  width: 50%;
+  margin: 0 auto;
+}

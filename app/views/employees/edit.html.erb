@@ -1,0 +1,53 @@
+<div class="m-5">
+  <h1>Employees edit form</h1>
+
+  <% if @employee.errors.any? %>
+    <h2>The following errors preventing articles to being saved</h2>
+    <ul>
+      <% @employee.errors.full_messages.each do |msg| %>
+        <li> <%= msg %> </li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <%= form_with(model: @employee, local: true) do |f| %>
+    <p>
+      <%= f.label :first_name %><br/>
+      <%= f.text_field :first_name %>
+    </p>
+
+    <p>
+      <%= f.label :last_name %><br/>
+      <%= f.text_field :last_name %>
+    </p>
+
+    <p>
+      <%= f.label :email %><br/>
+      <%= f.email_field :email %>
+    </p>
+
+    <p>
+      <%= f.label :position %><br/>
+      <%= f.text_field :position %>
+    </p>
+
+    <p>
+      <%= f.label :working %><br/>
+      <%= f.select :working, ["true", "false"] %>
+    </p>
+
+    <p>
+      <%= f.label :store_id %><br/>
+      <%= f.number_field :store_id %>
+    </p>
+
+    <p>
+      <%= f.submit "Edit employee" , class: 'btn btn-success my-3' %>
+    </p>
+
+    <p>
+      <td><%= link_to 'Cancel and return to employee index', employees_path, class: 'btn btn-primary my-3' %></td>
+    </p>
+
+  <% end %>
+</div>

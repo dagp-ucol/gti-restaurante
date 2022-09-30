@@ -1,0 +1,29 @@
+<h1><%= @store.name %> - Reports here</h1>
+<h2><%= @working_days %> Working days </h2>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Employee id</th>
+      <th scope="col">Employee name</th>
+      <th scope="col">Absences</th>
+      <th scope="col">Absences Porcentage</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @store_employees.each do |employee| %>
+      <tr>
+        <% assistance = Attendance.where(employee_id: employee.id).where.not(check_out: nil).length %>
+        <% absences = @working_days - assistance %>
+        <% absences_percentage = (absences * 100) / @working_days %>
+        <th scope="row"><%= employee.id %></th>
+        <th scope="row"><%= "#{employee.first_name} #{employee.last_name}" %></th>
+        <th scope="row"><%= "#{ absences }" %></th>
+        <th scope="row"><%= "#{ absences_percentage }%" %></th>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<p>
+  <td><%= link_to 'Cancel and return to reports index', store_reports_path, class: 'btn btn-primary' %></td>
+</p>

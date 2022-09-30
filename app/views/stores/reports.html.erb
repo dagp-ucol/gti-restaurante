@@ -1,0 +1,30 @@
+<h1 class="mb-5"><%= @store.name %>'s reports</h1>
+<div class="d-flex justify-content-evenly card">
+	<div class="card-body">
+    <table class="table table-striped">
+			<thead>
+					<tr>
+						<th scope="col">Action</th>
+						<th scope="col">Button</th>
+					</tr>
+			</thead>
+			<tbody>
+					<tr>
+						<td scope="row">Attendance by day</td>
+						<th scope="row"><%= link_to "Generate Report", store_reports_att_by_day_path(@store.id), class: 'btn btn-primary'  %></th>
+					</tr>
+					<tr>
+						<td scope="row">Absence report by month</td>
+						<th scope="row"><%= link_to "Generate Report", store_reports_abs_by_month_path(@store.id), class: 'btn btn-primary'  %></th>
+					</tr>
+					<tr>
+						<td scope="row">Average time employees checked in/out by month</td>
+						<th scope="row"><%= link_to "Generate Report", store_reports_avg_time_by_month_path(@store.id), class: 'btn btn-primary'  %></th>
+					</tr>
+			</tbody>
+    </table>
+	</div>
+</div>
+<p>
+	<td><%= link_to 'Go back', stores_path, class: 'btn btn-secondary mt-5' %></td>
+</p>

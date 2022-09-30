@@ -1,0 +1,27 @@
+<h1><%= @store.name %></h1>
+<%= form_with url: store_reports_avg_time_by_month_date_path do |f| %>
+  <div class="card my-5">
+    <div class="card-header">
+      Average hours worked by month
+    </div>
+    <div class="card-body">
+      <table class="table table-striped">
+        <thead>
+            <tr>
+              <th scope="col">Select Date</th>
+              <th scope="col">Submit</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+              <td scope="row"><%= f.month_field :month %></td>
+              <td scope="row"><%= f.submit "Generate report", class: 'btn btn-success my-3'%></td>
+            </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <p>
+    <td><%= link_to 'Cancel and return to reports index', store_reports_path, class: 'btn btn-primary' %></td>
+  </p>
+<% end %>

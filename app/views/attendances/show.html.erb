@@ -1,0 +1,28 @@
+<div class="m-5">
+	<h1>Attendance ID: <%=@attendance.id %></h1>
+	<div class="card mt-5 p-1" style="width: auto;">
+		<div class="card-body">
+			<% @data = Employee.find(@attendance.employee_id) %>
+			<p>Employee: <%= (@data.first_name + ' ' + @data.last_name) if @data.nil? %> </p>
+			<p>Employee ID: <%= @attendance.employee_id %></p>
+			<p>Store: <%= Store.find(@attendance.store_id).name %> </p>
+			<p>Store ID: <%= @attendance.store_id %></p>
+			<p>Check-in: <%= @attendance.check_in %></p>
+			<p>Check-out: <%= @attendance.check_out %></p>
+			<table>
+				<thead>
+					<tr>
+						<th scope="col">Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr class="mt-2">
+						<td><%= link_to 'Go Back', attendances_path, class: 'btn btn-secondary mr-3' %></td>
+						<td><%= link_to 'View employee', employee_path(@attendance.employee_id), class: 'btn btn-primary mx-1' %></td>
+						<td><%= link_to 'View Store', store_path(@attendance.store_id), class: 'btn btn-primary mx-1' %></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

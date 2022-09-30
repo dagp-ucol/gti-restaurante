@@ -1,0 +1,22 @@
+<div class='container m-5 custom_center_element'>
+  <h1>Log in</h1>
+  <%= form_with(scope: :session, url: login_path, local: true) do |f| %>
+    <p>
+      <%= f.label :email, class: 'form-label', placeholder: 'Enter your email addres' %><br/>
+      <%= f.text_field :email, class: 'form-control', placeholder: 'Enter your email address' %>
+    </p>
+
+    <p>
+      <%= f.label :password, class: 'form-label' %><br/>
+      <%= f.password_field :password, class: 'form-control', placeholder: 'Enter your password' %>
+    </p>
+
+    <p>
+      <%= f.submit "Log in", class: 'btn btn-success' %>
+    </p>
+
+    <p>
+      <%= link_to 'Cancel and back to home page', root_path, class: 'btn btn-primary' %>
+    </p>
+    <% end %>
+</div>

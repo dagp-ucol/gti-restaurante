@@ -1,0 +1,48 @@
+<div class="m-5">
+  <%# <a name="" id="" class="btn btn-primary" href="#" role="button">Atras</a> %>
+  <h1>Stores show store</h1>
+  <div class="card mt-5 p-1" style="width: 18rem;">
+    <div class="card-body">
+        <h5 class="card-title mb-3">Store ID: <%=@store.id %></h5>
+        <p>Name: <%= @store.name %></p>
+        <p>Addres: <%= @store.address %></p>
+    </div>
+  </div>
+  <p>
+    <td><%= link_to 'Return to store index', stores_path, class: 'btn btn-primary my-5' %></td>
+  </p>
+  <h3>Store employees</h3>
+  <div class="card">
+    <div class="card-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">First name</th>
+            <th scope="col">Last name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Position</th>
+            <th scope="col">Working</th>
+            <th coolspan=3>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @employees = @store.employees %>
+          <% @employees.each do |employee| %>
+            <tr>
+              <th scope="row"><%= employee.id %></th>
+              <td><%= employee.first_name %></td>
+              <td><%= employee.last_name %></td>
+              <td><%= employee.email %></td>
+              <td><%= employee.position %></td>
+              <td><%= employee.working %></td>
+              <td><%= link_to 'Show', employee_path(employee.id), class: 'btn btn-primary' %></td>
+              <td><%= link_to 'Edit', edit_employee_path(employee.id), class: 'btn btn-success' %></td>
+              <td><%= link_to 'Delete', employee_path(employee), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

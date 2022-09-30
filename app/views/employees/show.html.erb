@@ -1,0 +1,21 @@
+<div class="m-5">
+    <h1>Employees show employees</h1>
+
+    <div class="card mt-5 p-1" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title mb-3">Employee ID: <%=@employee.id %></h5>
+            <p>First name: <%= @employee.first_name %></p>
+            <p>Last name: <%= @employee.last_name %></p>
+            <p>Email: <%= @employee.email %></p>
+            <p>Position: <%= @employee.position %></p>
+            <p>Private number: <%= @employee.private_number %></p>
+            <p>Working: <%= @employee.working %></p>
+            <p>Store Id: <%= @employee.store_id %></p>
+        </div>
+    </div>
+
+    <p>
+      <td><%= link_to 'Return to employee index', employees_path, class: 'btn btn-primary my-3' %></td>
+    </p>
+
+</div>
