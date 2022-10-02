@@ -7,7 +7,7 @@ class CreateEmployees < ActiveRecord::Migration[6.1]
       t.string :last_name
       t.string :email
       t.string :position
-      t.integer :private_number
+      t.bigint :private_number
       t.boolean :working
 
       t.timestamps

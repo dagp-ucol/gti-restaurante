@@ -28,7 +28,7 @@ end
                   last_name: Faker::Name.last_name,
                   email: Faker::Internet.free_email(name: first_name_variable),
                   position: Faker::Job.title,
-                  private_number: rand(1000..9999),
+                  private_number: rand(1000000000..9999999999),
                   store_id: store_id_variable,
                   working: true)
 end

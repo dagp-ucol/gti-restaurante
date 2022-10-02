@@ -17,6 +17,6 @@ class Employee < ApplicationRecord
   private
 
   def random_private_number
-    self.private_number = rand(1000..9999)
+    self.private_number = rand(1000000000..9999999999)
   end
 end

@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 2022_09_30_051713) do
     t.string "first_name"
     t.string "last_name"
     t.string "position"
-    t.integer "private_number"
+    t.bigint "private_number"
     t.boolean "working"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
