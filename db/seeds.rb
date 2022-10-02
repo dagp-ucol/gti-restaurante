@@ -12,7 +12,7 @@ require 'faker'
 # We have to create the 'Stores' first in order to apply the relation between tables
 # Create Stores
 5.times do |i|
-  puts "Creating store #{i}"
+  puts "Creating store #{i + 1}"
   Store.create(
     name: Faker::Company.name,
     address: Faker::Address.full_address
@@ -20,8 +20,8 @@ require 'faker'
 end
 
 # # Crate Employees
-10.times do |i|
-  puts "Creating employee #{i}"
+5.times do |i|
+  puts "Creating employee #{i + 1}"
   first_name_variable = Faker::Name.first_name
   store_id_variable = rand(1..5)
   Employee.create(first_name: first_name_variable,
@@ -31,4 +31,16 @@ end
                   private_number: rand(1000000000..9999999999),
                   store_id: store_id_variable,
                   working: true)
+end
+
+# Create Foods
+20.times do |i|
+  puts "Creating food #{i + 1}"
+  food_name = Faker::Food.dish
+  food_price = rand(50..250)
+  food_type = "Food"
+  Food.create(name: food_name,
+              quantity: rand(1..10),
+              price: food_price,
+              type: food_type)
 end

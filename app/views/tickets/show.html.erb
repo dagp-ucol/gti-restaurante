@@ -1,9 +1,14 @@
 <p id="notice"><%= notice %></p>
 
+<h1 class="mb-4">Ticket number: <%= @ticket.id %></h1>
+<%= link_to 'Add Food or Drinks', edit_ticket_path(@ticket), class: "btn btn-success mb-4" %>
+
+<h3 class="mb-3">Current food/drinks in the order</h3>
 <p>
   <strong>Table:</strong>
   <%= @ticket.table %>
 </p>
+
 
 <p>
   <strong>Final price:</strong>

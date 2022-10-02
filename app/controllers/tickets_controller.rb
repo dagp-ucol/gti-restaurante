@@ -13,10 +13,12 @@ class TicketsController < ApplicationController
   # GET /tickets/new
   def new
     @ticket = Ticket.new
+    @food = Food.all
   end
 
   # GET /tickets/1/edit
   def edit
+    @foods = Food.all
   end
 
   # POST /tickets or /tickets.json

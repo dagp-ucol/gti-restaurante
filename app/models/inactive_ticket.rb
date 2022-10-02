@@ -1,0 +1,2 @@
+class InactiveTicket < ApplicationRecord
+end

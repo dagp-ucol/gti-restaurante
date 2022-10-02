@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_30_051713) do
+ActiveRecord::Schema.define(version: 2022_10_02_173900) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_buffercache"
@@ -55,9 +55,21 @@ ActiveRecord::Schema.define(version: 2022_09_30_051713) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "inactive_tickets", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "ingredients", force: :cascade do |t|
     t.string "name"
     t.integer "quantity"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "order_foods", force: :cascade do |t|
+    t.integer "food_id"
+    t.integer "ticket_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -74,6 +86,7 @@ ActiveRecord::Schema.define(version: 2022_09_30_051713) do
     t.float "final_price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "status"
   end
 
 end
