@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Restaurante</title>
+    <title>Delly</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -17,7 +17,7 @@
       <% if logged_in? %>
         <h1 class="nav_h1">👨‍💻 Admin hub </h1>
       <% else %>
-          <a href="/"><h1 class="nav_h1">Restaurante</h1></a>
+          <a href="/"><h1 class="nav_h1">Delly</h1></a>
       <% end %>
       <% if logged_in? %>
         <%= link_to 'Log out' , logout_path, method: :delete,class: 'btn btn-warning' %>

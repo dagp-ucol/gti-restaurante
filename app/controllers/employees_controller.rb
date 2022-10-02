@@ -1,13 +1,14 @@
 # frozen_string_literal: true
 
 class EmployeesController < ApplicationController
-  before_action :require_admin
-  before_action :set_employee, only: %i[show edit update destroy]
+  # before_action :require_admin
+  before_action :set_employee, only: %i[show edit update]
 
   def show; end
 
   def index
-    @employees = Employee.all
+    @employees = Employee.where(working: true)
+    @employees_despedidos = Employee.where(working: false)
   end
 
   def new
