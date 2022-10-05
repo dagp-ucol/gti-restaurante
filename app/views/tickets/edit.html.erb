@@ -1,7 +1,7 @@
-<h1>Editing Ticket</h1>
+<h1>Add food to ticket ID:<%= @ticket.id %></h1>
 
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Name</th>
@@ -14,15 +14,15 @@
 
   <tbody>
     <% @foods.each do |food| %>
+      <%= form_with(model: @ticket, url: ticket_path(@ticket), local: true, method: :put) do |f| %>
       <tr>
         <td><%= food.name %></td>
         <td><%= food.quantity %></td>
         <td><%= food.price %></td>
         <td><%= food.type %></td>
-        <td><%= link_to 'Show', food %></td>
-        <td><%= link_to 'Edit', edit_food_path(food) %></td>
-        <td><%= link_to 'Destroy', food, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= f.button "Add food" , name: "dish", value: food.id, class: "btn btn-success" %></td>
       </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>

@@ -38,15 +38,21 @@ class TicketsController < ApplicationController
 
   # PATCH/PUT /tickets/1 or /tickets/1.json
   def update
-    respond_to do |format|
-      if @ticket.update(ticket_params)
-        format.html { redirect_to ticket_url(@ticket), notice: "Ticket was successfully updated." }
-        format.json { render :show, status: :ok, location: @ticket }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @ticket.errors, status: :unprocessable_entity }
-      end
-    end
+
+    byebug
+
+    OrderFood.create(food_id: params[:dish], ticket_id: params[:id])
+    redirect_to ticket_url(params[:id]), notice: "Ticket was successfully updated."
+
+    # respond_to do |format|
+    #   if @ticket.update(ticket_params)
+    #     format.html { redirect_to ticket_url(@ticket), notice: "Ticket was successfully updated." }
+    #     format.json { render :show, status: :ok, location: @ticket }
+    #   else
+    #     format.html { render :edit, status: :unprocessable_entity }
+    #     format.json { render json: @ticket.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # DELETE /tickets/1 or /tickets/1.json
