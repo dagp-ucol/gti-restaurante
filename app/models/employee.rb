@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class Employee < ApplicationRecord
-  belongs_to :store
   has_many :attendances
 
   before_create :random_private_number

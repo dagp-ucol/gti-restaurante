@@ -86,7 +86,7 @@ ActiveRecord::Schema.define(version: 2022_10_02_173900) do
     t.float "final_price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "status"
+    t.boolean "status", null: false, default: true
   end
 
 end
