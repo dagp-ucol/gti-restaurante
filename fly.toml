@@ -1,6 +1,6 @@
-# fly.toml file generated for kata06-reloj-checador on 2022-09-23T15:19:43-05:00
+# fly.toml file generated for gti-restaurante on 2022-10-05T03:35:00-05:00
 
-app = "kata06-reloj-checador"
+app = "gti-restaurante"
 kill_signal = "SIGINT"
 kill_timeout = 5
 processes = []
@@ -11,7 +11,7 @@ processes = []
     SERVER_COMMAND = "bin/rails fly:server"
 
 [deploy]
-  release_command = "bundle install"
+  release_command = "bin/rails fly:release"
 
 [env]
   PORT = "8080"
