@@ -1,5 +1,5 @@
-<h1>Add food to ticket ID:<%= @ticket.id %></h1>
-
+<%= link_to 'Back', tickets_path, class: "btn btn-secondary" %>
+<h1 class="my-3">Add food to ticket ID:<%= @ticket.id %></h1>
 
 <table class="table table-striped">
   <thead>
@@ -14,22 +14,15 @@
 
   <tbody>
     <% @foods.each do |food| %>
-      <%= form_with(model: @ticket, url: ticket_path(@ticket), local: true, method: :put) do |f| %>
       <tr>
         <td><%= food.name %></td>
         <td><%= food.quantity %></td>
         <td><%= food.price %></td>
         <td><%= food.type %></td>
-        <td><%= f.button "Add food" , name: "dish", value: food.id, class: "btn btn-success" %></td>
+        <%= form_with(model: @ticket, url: ticket_path(@ticket), local: true, method: :patch) do |f| %>
+          <td><%= f.button "Add food", name: "dish", value: food.id, class: "btn btn-success" %></td>
+        <% end %>
       </tr>
-      <% end %>
     <% end %>
   </tbody>
 </table>
-
-
-
-<%= render 'form', ticket: @ticket %>
-
-<%= link_to 'Show', @ticket %> |
-<%= link_to 'Back', tickets_path %>

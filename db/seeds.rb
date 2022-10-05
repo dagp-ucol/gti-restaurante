@@ -11,13 +11,13 @@ require 'faker'
 
 # We have to create the 'Stores' first in order to apply the relation between tables
 # Create Stores
-5.times do |i|
-  puts "Creating store #{i + 1}"
-  Store.create(
-    name: Faker::Company.name,
-    address: Faker::Address.full_address
-  )
-end
+# 5.times do |i|
+#   puts "Creating store #{i + 1}"
+#   Store.create(
+#     name: Faker::Company.name,
+#     address: Faker::Address.full_address
+#   )
+# end
 
 # # Crate Employees
 5.times do |i|
@@ -40,7 +40,7 @@ end
   food_price = rand(50..250)
   food_type = "Food"
   Food.create(name: food_name,
-              quantity: rand(1..10),
+              quantity: rand(150-455),
               price: food_price,
               type: food_type)
 end
