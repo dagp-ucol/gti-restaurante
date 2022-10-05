@@ -3,12 +3,14 @@ class TicketsController < ApplicationController
 
   # GET /tickets or /tickets.json
   def index
-    @tickets = Ticket.all
+    @ticketsActive = (Ticket.where(status: true)).reverse
+    @ticketsInactive = (Ticket.where(status: false)).reverse
   end
 
   # GET /tickets/1 or /tickets/1.json
   def show
     @orders = OrderFood.where(ticket_id: params[:id])
+    @employee = Employee.find((@ticket.employee_id))
   end
 
   # GET /tickets/new
@@ -24,6 +26,7 @@ class TicketsController < ApplicationController
 
   # POST /tickets or /tickets.json
   def create
+    byebug
     @ticket = Ticket.new(ticket_params)
 
     respond_to do |format|
@@ -65,10 +68,11 @@ class TicketsController < ApplicationController
       update_final_price
       redirect_to ticket_url(params[:id]), notice: "Dish was successfully removed."
     else
-      respond_to do |format|
-        format.html { redirect_to tickets_url, notice: "Ticket was successfully destroyed." }
-        format.json { head :no_content }
-      end
+      # byebug
+      @ticket_temp = Ticket.find(params[:id])
+      @ticket_temp.status = false
+      @ticket_temp.save
+      redirect_to tickets_url, notice: "Ticket ha sido marcado como inactivo."
     end
 
     # @ticket.destroy
@@ -87,7 +91,7 @@ class TicketsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def ticket_params
-      params.require(:ticket).permit(:table, :final_price)
+      params.require(:ticket).permit(:table, :final_price, :employee_id)
     end
 
     def update_final_price

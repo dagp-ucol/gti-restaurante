@@ -1,29 +1,54 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Tickets</h1>
+<div class="m-5">
+<%= link_to 'Atrás', root_path, class: "btn btn-dark my-3" %>
+<%= link_to 'Nuevo Pedido', new_ticket_path, class: "btn btn-success" %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Table</th>
-      <th>Final price</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<h1>Tickets Activos</h1>
 
-  <tbody>
-    <% @tickets.each do |ticket| %>
-      <tr>
-        <td><%= ticket.table %></td>
-        <td><%= ticket.final_price %></td>
-        <td><%= link_to 'Show', ticket %></td>
-        <td><%= link_to 'Edit', edit_ticket_path(ticket) %></td>
-        <td><%= link_to 'Destroy', ticket, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <div class="container">
+    <table class="table table-hover">
+      <thead>
+        <th scope="col">Ticket ID</th>
+        <th scope="col">Mesa</th>
+        <th scope="col">Precio Final</th>
+        <th colspan="5">Acciones</th>
+      <tbody>
+          <% @ticketsActive.each do |ticket| %>
+          <tr>
+            <td><%= ticket.id %></td>
+            <td><%= ticket.table %></td>
+            <td>$<%= ticket.final_price %></td>
+            <td><%= link_to 'Ver', ticket, class: "btn btn-success" %></td>
+            <%= form_with(model: @ticket, url: tickets_path, local: true, method: :delete) do |f| %>
+              <td><%= link_to 'Completar', ticket, class: "btn btn-primary", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <% end %>
+          </tr>
+          <% end %>
+      </tbody>
+    </table>
+  </div>
 
-<br>
+  <h1 class="my-3">Tickets Inactivos</h1>
+  <div class="container">
+    <table class="table table-hover">
+      <thead>
+        <th scope="col">Ticket ID</th>
+        <th scope="col">Mesa</th>
+        <th scope="col">Precio Final</th>
+        <th colspan="5">Acciones</th>
+      <tbody>
+          <% @ticketsInactive.each do |ticket| %>
+          <tr>
+            <td><%= ticket.id %></td>
+            <td><%= ticket.table %></td>
+            <td>$<%= ticket.final_price %></td>
+            <td><%= link_to 'Ver', ticket, class: "btn btn-success" %></td>
+          </tr>
+          <% end %>
+      </tbody>
+    </table>
+  </div>
 
-<%= link_to 'New Ticket', new_ticket_path %>
+  <br>
+</div>

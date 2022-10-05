@@ -1,15 +1,17 @@
-<%= link_to 'Back', tickets_path, class: "btn btn-secondary" %>
+<%= link_to 'Atrás', tickets_path, class: "btn btn-secondary" %>
 
-<h1 class="my-3">Ticket number: <%= @ticket.id %></h1>
+<h1 class="my-3">Ticket número: <%= @ticket.id %></h1>
 <h3>
-  <strong>Table:</strong>
+  <strong>Mesa:</strong>
   <%= @ticket.table %>
 </h3>
-
-
 <h4>
-  <strong>Final price:</strong>
+  <strong>Total del ticket:</strong>
   $<%= @ticket.final_price %>
+</h4>
+<h4>
+  <strong>Empleado atendiendo:</strong>
+  <%= @employee.first_name + " " + @employee.last_name %>
 </h4>
 <%= link_to 'Add Food or Drinks', edit_ticket_path(@ticket), class: "btn btn-success my-4" %>
 
@@ -21,10 +23,10 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Quantity</th>
-      <th>Price</th>
-      <th>Type</th>
+      <th>Nombre</th>
+      <th>Cantidad</th>
+      <th>Precio</th>
+      <th>Tipo</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -34,8 +36,8 @@
       <% @food = Food.find(order.food_id) %>
       <tr>
         <td><%= @food.name %></td>
-        <td><%= @food.quantity %> grams</td>
-        <td>$<%= @food.price %></td>
+        <td><%= @food.quantity %> gramos</td>
+        <td>$<%= @food.price %> MXN</td>
         <td><%= @food.type %></td>
         <%= form_with(model: @ticket, url: ticket_path(@ticket), local: true, method: :delete) do |f| %>
           <td><%= f.button "Remove", name: "dish", value: order.id, class: "btn btn-danger" %></td>

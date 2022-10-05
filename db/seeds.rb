@@ -20,6 +20,7 @@ require 'faker'
 # end
 
 # # Crate Employees
+Employee.create(first_name: 'Dellymoon', last_name: 'Restaurant', email: Faker::Internet.free_email, position: Faker::Job.title, private_number: rand(1000000000..9999999999), store_id: 1, working: true)
 5.times do |i|
   puts "Creating employee #{i + 1}"
   first_name_variable = Faker::Name.first_name
@@ -34,7 +35,7 @@ require 'faker'
 end
 
 # Create Foods
-20.times do |i|
+50.times do |i|
   puts "Creating food #{i + 1}"
   food_name = Faker::Food.dish
   food_price = rand(50..250)

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_02_173900) do
+ActiveRecord::Schema.define(version: 2022_10_05_161426) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_buffercache"
@@ -86,7 +86,8 @@ ActiveRecord::Schema.define(version: 2022_10_02_173900) do
     t.float "final_price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.boolean "status", null: false, default: true
+    t.boolean "status", default: true, null: false
+    t.integer "employee_id", default: 1, null: false
   end
 
 end

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class StoresController < ApplicationController
-  before_action :require_admin
+  # before_action :require_admin
   before_action :set_store,
                 only: %i[show edit update destroy reports reports_att_by_day reports_att_by_day_date reports_abs_by_month
                          reports_abs_by_month_date reports_avg_time_by_month reports_avg_time_by_month_date]
@@ -10,10 +10,12 @@ class StoresController < ApplicationController
 
   def index
     @stores = Store.all
+    redirect_to root_path
   end
 
   def new
     @store = Store.new
+    redirect_to tickets_path
   end
 
   def create
@@ -25,7 +27,9 @@ class StoresController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+    redirect_to tickets_path
+  end
 
   def update
     if @store.update(store_params)
