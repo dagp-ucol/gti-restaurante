@@ -9,8 +9,13 @@ class TicketsController < ApplicationController
 
   # GET /tickets/1 or /tickets/1.json
   def show
-    @orders = OrderFood.where(ticket_id: params[:id])
-    @employee = Employee.find((@ticket.employee_id))
+    @employee = Employee.find_by(id: (@ticket.employee_id))
+    if @employee
+      @orders = OrderFood.where(ticket_id: params[:id])
+    else
+      flash[:alert] = 'Oucrrio un error, no se encontro el empleado, revisa la integridad de la base de datos'
+      redirect_to tickets_path
+    end
   end
 
   # GET /tickets/new
@@ -26,18 +31,24 @@ class TicketsController < ApplicationController
 
   # POST /tickets or /tickets.json
   def create
-    byebug
-    @ticket = Ticket.new(ticket_params)
-
-    respond_to do |format|
-      if @ticket.save
-        format.html { redirect_to ticket_url(@ticket), notice: "Ticket was successfully created." }
-        format.json { render :show, status: :created, location: @ticket }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @ticket.errors, status: :unprocessable_entity }
+    # byebug
+    @find_employee = Employee.find_by(id: (params[:ticket][:employee_id]).to_i)
+    if @find_employee
+      @ticket = Ticket.new(ticket_params)
+      respond_to do |format|
+        if @ticket.save
+          format.html { redirect_to ticket_url(@ticket), notice: "Ticket was successfully created." }
+          format.json { render :show, status: :created, location: @ticket }
+        else
+          format.html { render :new, status: :unprocessable_entity }
+          format.json { render json: @ticket.errors, status: :unprocessable_entity }
+        end
       end
+    else
+      flash[:alert] = 'Ese empleado no existe, usa el ID:1 para si no cuentas con ID de empleado'
+      redirect_to new_ticket_url
     end
+
   end
 
   # PATCH/PUT /tickets/1 or /tickets/1.json

@@ -1,13 +1,13 @@
 <%= link_to 'Atrás', tickets_path, class: "btn btn-secondary" %>
 
-<h1 class="my-3">Ticket número: <%= @ticket.id %></h1>
-<h3>
+<h3 class="my-2 mt-4"><strong>Ticket número: <strong><%= @ticket.id %></h3>
+<h4>
   <strong>Mesa:</strong>
   <%= @ticket.table %>
-</h3>
+</h4>
 <h4>
   <strong>Total del ticket:</strong>
-  $<%= @ticket.final_price %>
+  $<%= @ticket.final_price ? @ticket.final_price : 0.0 %>
 </h4>
 <h4>
   <strong>Empleado atendiendo:</strong>
@@ -37,7 +37,7 @@
       <tr>
         <td><%= @food.name %></td>
         <td><%= @food.quantity %> gramos</td>
-        <td>$<%= @food.price %> MXN</td>
+        <td>$<%= @food.price ? @food.price : 0.0 %> MXN</td>
         <td><%= @food.type %></td>
         <%= form_with(model: @ticket, url: ticket_path(@ticket), local: true, method: :delete) do |f| %>
           <td><%= f.button "Remove", name: "dish", value: order.id, class: "btn btn-danger" %></td>
