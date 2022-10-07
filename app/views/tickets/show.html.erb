@@ -23,6 +23,7 @@
 <table class="table table-striped">
   <thead>
     <tr>
+      <th>Status</th>
       <th>Nombre</th>
       <th>Cantidad</th>
       <th>Precio</th>
@@ -35,6 +36,13 @@
     <% @orders.each do |order| %>
       <% @food = Food.find(order.food_id) %>
       <tr>
+        <% if order.status == 0 %>
+          <td><div class="alert alert-danger w-75 text-center p-1">No Stock</div></td>
+        <% elsif order.status == 1 %>
+          <td><div class="alert alert-warning w-75 text-center p-1">Cocinando</div></td>
+        <% else %>
+          <td><div class="alert alert-success w-75 text-center p-1">Listo</div></td>
+        <% end %>
         <td><%= @food.name %></td>
         <td><%= @food.quantity %> gramos</td>
         <td>$<%= @food.price ? @food.price : 0.0 %> MXN</td>

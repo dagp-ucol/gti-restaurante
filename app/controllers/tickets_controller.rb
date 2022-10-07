@@ -27,6 +27,7 @@ class TicketsController < ApplicationController
   # GET /tickets/1/edit
   def edit
     @foods = Food.all
+    render 'edit'
   end
 
   # POST /tickets or /tickets.json

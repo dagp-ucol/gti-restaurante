@@ -1,19 +1,18 @@
 <main class="home_main">
   <%= render "pages/clock" %>
     <div class="row">
-      <%= link_to 'Crear pedido' , new_ticket_path, class: 'col btn btn-success m-1 p-4' %>
+      <%= link_to 'Pedidos (Mesero)' , new_ticket_path, class: 'col btn btn-success m-1 p-4' %>
     </div>
     <div class="row">
-      <%= link_to 'Pedidos Activos' , tickets_path, class: 'col btn btn-primary m-1 p-3' %>
+      <%= link_to 'Cocina (Chef)' , order_foods_path, class: 'col btn btn-primary m-1 p-3' %>
       <% # link_to 'Historial de Pedidos' , inactive_tickets_path, class: 'col btn btn-primary m-1 p-3' %>
     </div>
     <div class="row">
-      <%= link_to 'Ingredientes' , ingredients_path, class: 'col btn btn-secondary m-1 p-3' %>
-      <%= link_to 'Platillos' , foods_path, class: 'col btn btn-secondary m-1 p-3' %>
+      <%= link_to 'Ingredientes (Chef)' , ingredients_path, class: 'col btn btn-secondary m-1 p-3' %>
+      <%= link_to 'Platillos (Chef)' , foods_path, class: 'col btn btn-secondary m-1 p-3' %>
     </div>
     <div class="row mb-5">
-      <%= link_to 'Cocina' , ingredients_path, class: 'col btn btn-info m-1 p-3' %>
-      <%= link_to 'Empleados' , employees_path, class: 'col btn btn-info m-1 p-3' %>
+      <%= link_to 'Empleados (Admin)' , employees_path, class: 'col btn btn-primary m-1 p-3' %>
     </div>
 </main>
 <%= javascript_pack_tag "home.js" %>

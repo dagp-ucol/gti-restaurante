@@ -3,20 +3,23 @@ class OrderFoodsController < ApplicationController
 
   # GET /order_foods or /order_foods.json
   def index
-    @order_foods = OrderFood.all
+    @order_foods = OrderFood.all.where(status: 1)
+    @order_foods_all = OrderFood.all.where.not(status: 1).reverse
   end
 
   # GET /order_foods/1 or /order_foods/1.json
   def show
+    redirect_to order_foods_path
   end
 
   # GET /order_foods/new
   def new
-    @order_food = OrderFood.new
+    redirect_to order_foods_path
   end
 
   # GET /order_foods/1/edit
   def edit
+    redirect_to order_foods_path
   end
 
   # POST /order_foods or /order_foods.json
@@ -36,25 +39,16 @@ class OrderFoodsController < ApplicationController
 
   # PATCH/PUT /order_foods/1 or /order_foods/1.json
   def update
-    respond_to do |format|
-      if @order_food.update(order_food_params)
-        format.html { redirect_to order_food_url(@order_food), notice: "Order food was successfully updated." }
-        format.json { render :show, status: :ok, location: @order_food }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @order_food.errors, status: :unprocessable_entity }
-      end
-    end
+    @order_food.update(status: 2)
+    flash[:notice] = 'Pedido Listo'
+    redirect_to order_foods_path
   end
 
   # DELETE /order_foods/1 or /order_foods/1.json
   def destroy
-    @order_food.destroy
-
-    respond_to do |format|
-      format.html { redirect_to order_foods_url, notice: "Order food was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    @order_food.update(status: 0)
+    flash[:notice] = 'Pedido Cancelado'
+    redirect_to order_foods_path
   end
 
   private
