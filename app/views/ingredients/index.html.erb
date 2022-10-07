@@ -1,29 +1,38 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Ingredients</h1>
+<div class="m-5">
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Quantity</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+  <ul class="nav mb-3">
+    <li class="nav-item">
+      <%= link_to 'Regresar', root_path, class:"btn btn-dark" %>
+    </li>
+  </ul>
+  <h1 class="mb-5">Ingredientes - Inventario</h1>
+  <%= link_to 'Agregar', new_ingredient_path, class: "btn btn-success mb-3" %>
 
-  <tbody>
-    <% @ingredients.each do |ingredient| %>
-      <tr>
-        <td><%= ingredient.name %></td>
-        <td><%= ingredient.quantity %></td>
-        <td><%= link_to 'Show', ingredient %></td>
-        <td><%= link_to 'Edit', edit_ingredient_path(ingredient) %></td>
-        <td><%= link_to 'Destroy', ingredient, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <div class="table1">
+    <table class="table table-hover table-sm">
+        <thead class="thead-dark">
+          <tr>
+            <th class="th">Nombre</th>
+            <th class="th">Cantidad</th>
+            <th colspan="3" class="th">Botones</th>
+          </tr>
+        </thead>
 
-<br>
+        <tbody>
+          <% @ingredients.each do |ingredient| %>
+            <tr>
+              <td><%= ingredient.name %></td>
+              <td><%= ingredient.quantity %></td>
+              <td><%= link_to 'Editar', edit_ingredient_path(ingredient), class: "btn btn-info" %></td>
+              <td><%= link_to 'Borrar', ingredient, class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      </div>
 
-<%= link_to 'New Ingredient', new_ingredient_path %>
+  <br>
+
+</div>

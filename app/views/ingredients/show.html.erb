@@ -1,14 +1,14 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
+  <strong>Nombre:</strong>
   <%= @ingredient.name %>
 </p>
 
 <p>
-  <strong>Quantity:</strong>
+  <strong>Cantidad:</strong>
   <%= @ingredient.quantity %>
 </p>
 
-<%= link_to 'Edit', edit_ingredient_path(@ingredient) %> |
-<%= link_to 'Back', ingredients_path %>
+<%= link_to 'Editar', edit_ingredient_path(@ingredient), class: "btn btn-primary" %>
+<%= link_to 'Volver', ingredients_path, class: "btn btn-primary" %>

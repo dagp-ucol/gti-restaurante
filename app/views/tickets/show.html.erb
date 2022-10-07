@@ -13,7 +13,7 @@
   <strong>Empleado atendiendo:</strong>
   <%= @employee.first_name + " " + @employee.last_name %>
 </h4>
-<%= link_to 'Add Food or Drinks', edit_ticket_path(@ticket), class: "btn btn-success my-4" %>
+<%= link_to 'Añadir alimentos', edit_ticket_path(@ticket), class: "btn btn-success my-4" %>
 
 <h3 class="mb-3">Current food/drinks in the order</h3>
 <p id="notice"><%= notice %></p>
@@ -48,7 +48,7 @@
         <td>$<%= @food.price ? @food.price : 0.0 %> MXN</td>
         <td><%= @food.type %></td>
         <%= form_with(model: @ticket, url: ticket_path(@ticket), local: true, method: :delete) do |f| %>
-          <td><%= f.button "Remove", name: "dish", value: order.id, class: "btn btn-danger" %></td>
+          <td><%= f.button "Borrar", name: "dish", value: order.id, class: "btn btn-danger" %></td>
         <% end %>
       </tr>
     <% end %>

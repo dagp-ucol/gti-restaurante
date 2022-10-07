@@ -4,17 +4,17 @@
     <div class="card mt-5 p-1" style="width: 18rem;">
         <div class="card-body">
             <h5 class="card-title mb-3">Employee ID: <%=@employee.id %></h5>
-            <p>First name: <%= @employee.first_name %></p>
-            <p>Last name: <%= @employee.last_name %></p>
+            <p>Nombres: <%= @employee.first_name %></p>
+            <p>Apellidos: <%= @employee.last_name %></p>
             <p>Email: <%= @employee.email %></p>
-            <p>Position: <%= @employee.position %></p>
-            <p>Private number: <%= @employee.private_number %></p>
-            <p>Working: <%= @employee.working %></p>
+            <p>Posición: <%= @employee.position %></p>
+            <p>Celular: <%= @employee.private_number %></p>
+            <p>Trabajando: <%= @employee.working %></p>
         </div>
     </div>
 
     <p>
-      <td><%= link_to 'Return to employee index', employees_path, class: 'btn btn-primary my-3' %></td>
+      <td><%= link_to 'Regresar', employees_path, class: 'btn btn-primary my-3' %></td>
     </p>
 
 </div>

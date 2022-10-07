@@ -8,6 +8,7 @@ class FoodsController < ApplicationController
 
   # GET /foods/1 or /foods/1.json
   def show
+    redirect_to foods_path
   end
 
   # GET /foods/new
