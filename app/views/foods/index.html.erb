@@ -26,7 +26,11 @@
           <% @foods.each do |food| %>
             <tr>
               <td><%= food.name %></td>
-              <td><%= food.quantity %> gm</td>
+              <% if food.food_type == "Bebida"%>
+              <td><%= food.quantity %> ml</td>
+              <% else %>
+              <td><%= food.quantity %> g</td>
+              <% end %>
               <td>$<%= food.price %>MXN</td>
               <td><%= food.food_type %></td>
               <td><%= link_to 'Edit', edit_food_path(food), class: "btn btn-info" %></td>

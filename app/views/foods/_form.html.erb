@@ -26,9 +26,9 @@
     <%= form.text_field :price %>
   </div>
 
-  <div class="field">
+  <div class="field mb-3">
     <%= form.label "Tipo" %>
-    <%= form.text_field :food_type %>
+    <%= form.select :food_type, ["Comida", "Bebida"]  %>
   </div>
 
   <div class="actions">

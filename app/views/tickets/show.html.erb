@@ -44,7 +44,11 @@
           <td><div class="alert alert-success w-75 text-center p-1">Listo</div></td>
         <% end %>
         <td><%= @food.name %></td>
-        <td><%= @food.quantity %> gramos</td>
+        <% if @food.food_type == "Bebida"%>
+          <td><%= @food.quantity %> ml</td>
+          <% else %>
+          <td><%= @food.quantity %> g</td>
+        <% end %>
         <td>$<%= @food.price ? @food.price : 0.0 %> MXN</td>
         <td><%= @food.food_type %></td>
         <%= form_with(model: @ticket, url: ticket_path(@ticket), local: true, method: :delete) do |f| %>
