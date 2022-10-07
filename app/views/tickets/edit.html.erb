@@ -20,7 +20,7 @@
         <td><%= food.price %></td>
         <td><%= food.food_type %></td>
         <%= form_with(model: @ticket, url: ticket_path(@ticket), local: true, method: :patch) do |f| %>
-          <td><%= f.button "Add food", name: "dish", value: food.id, class: "btn btn-success" %></td>
+          <td><%= f.button "Añadir", name: "dish", value: food.id, class: "btn btn-success" %></td>
         <% end %>
       </tr>
     <% end %>

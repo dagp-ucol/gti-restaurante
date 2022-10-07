@@ -55,7 +55,6 @@
         <%= form_with(model: @ticket, url: ticket_path(@ticket), local: true, method: :delete) do |f| %>
           <td><%= f.button "Borrar", name: "dish", value: order.id, class: "btn btn-danger" %></td>
         <% end %>
-        <td><%= link_to "PRINT", '#', onclick: "printpage()" %></td>
       </tr>
     <% end %>
   </tbody>
