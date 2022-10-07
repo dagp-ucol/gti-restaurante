@@ -46,7 +46,7 @@
         <td><%= @food.name %></td>
         <td><%= @food.quantity %> gramos</td>
         <td>$<%= @food.price ? @food.price : 0.0 %> MXN</td>
-        <td><%= @food.type %></td>
+        <td><%= @food.food_type %></td>
         <%= form_with(model: @ticket, url: ticket_path(@ticket), local: true, method: :delete) do |f| %>
           <td><%= f.button "Borrar", name: "dish", value: order.id, class: "btn btn-danger" %></td>
         <% end %>
