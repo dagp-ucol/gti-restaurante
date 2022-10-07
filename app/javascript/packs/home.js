@@ -53,3 +53,8 @@ function setDate() {
 }
 
 setInterval(setDate, 1000);
+
+function printpage()
+{
+  window.print()
+}
