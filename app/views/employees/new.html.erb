@@ -15,12 +15,12 @@
 
   <%= form_with scope: :employee, url: employees_path, local: true do |f| %>
     <p>
-      <%= f.label "Primer nombre" %><br/>
+      <%= f.label "Nombre(s)" %><br/>
       <%= f.text_field :first_name %>
     </p>
 
     <p>
-      <%= f.label "Segundo Nombre" %><br/>
+      <%= f.label "Apellidos" %><br/>
       <%= f.text_field :last_name %>
     </p>
 
